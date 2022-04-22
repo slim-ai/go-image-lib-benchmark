@@ -11,7 +11,7 @@ import (
 )
 
 // CopySkopeo copies srcRef to dstRef using containers/image libs.
-func CopySkopeo(ctx context.Context, srcRef, dstRef string) error {
+func CopySkopeo(ctx context.Context, srcRef, dstRef string, parallelism int) error {
 	srcIRef, err := alltransports.ParseImageName(srcRef)
 	if err != nil {
 		return err
@@ -41,11 +41,11 @@ func CopySkopeo(ctx context.Context, srcRef, dstRef string) error {
 	}
 
 	opts := &copy.Options{
-		SourceCtx:          srcCtx,
-		DestinationCtx:     dstCtx,
-		ImageListSelection: copy.CopyAllImages,
-		ReportWriter:       ioutil.Discard,
-		// PreserveDigests:    true,
+		SourceCtx:            srcCtx,
+		DestinationCtx:       dstCtx,
+		ImageListSelection:   copy.CopyAllImages,
+		ReportWriter:         ioutil.Discard,
+		MaxParallelDownloads: uint(parallelism),
 	}
 	_, err = copy.Image(ctx, policyCtx, dstIRef, srcIRef, opts)
 	return err

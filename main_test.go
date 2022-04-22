@@ -15,6 +15,10 @@ import (
 	"github.com/google/go-containerregistry/pkg/v1/random"
 )
 
+var (
+	parallelism = 8
+)
+
 func getRegistries(b *testing.B, prefix string) (srcRegSrv, dstRegSrv *httptest.Server, srcImgs, dstImgs []string) {
 	srcImgs = make([]string, b.N)
 	dstImgs = make([]string, b.N)
