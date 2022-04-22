@@ -7,9 +7,7 @@ The current list of libraries:
  since [`skopeo`](https://github.com/containers/skopeo) is the most well-known entrypoint for this library.
 - [`google/go-containerregistry`](https://github.com/google/go-containerregistry),
 specifically the [`crane` package](https://github.com/google/go-containerregistry/tree/main/pkg/crane).
-- [`containerd/containerd`](https://github.com/containerd/containerd), an industry standard runtime lib.
-    - This library does not offer a "copy" method, and also does not purport itself to be tuned for such a workload,
-    so it does not fit well in this benchmark. Nonetheless it is worth analysing for breadth.
+- [`containerd/containerd`](https://github.com/containerd/containerd), an industry standard container runtime lib.
 
 ## Benchmarks
 
@@ -27,7 +25,15 @@ cpu: 11th Gen Intel(R) Core(TM) i7-1195G7 @ 2.90GHz
 Each test is run with max parallelism of 8. Libraries differ in their usage of parallelism;
 in most cases it equates to number of goroutine workers.
 
-Current stats with 1, 4, and 8 CPUs:
+Current stats are for 1, 4, and 8 CPUs.
+
+### Copy
+
+This benchmark tests copying from one networked registry to another.
+
+Notes and caveats:
+- The `containerd` library does not offer a copy method, and also does not purport itself to be tuned for such a workload,
+so it does not fit well in this benchmark. Nonetheless it is worth analysing for breadth.
 
 ```
 BenchmarkCopySkopeo                  100          14055206 ns/op         1045418 B/op       6487 allocs/op
