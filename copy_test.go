@@ -5,12 +5,12 @@ import (
 	"testing"
 )
 
-func BenchmarkCopySkopeo(b *testing.B) {
-	benchmarkCopy(b, CopySkopeo, "docker://")
+func BenchmarkCopyContainersImage(b *testing.B) {
+	benchmarkCopy(b, CopyContainersImage, "docker://")
 }
 
-func BenchmarkCopyCrane(b *testing.B) {
-	benchmarkCopy(b, CopyCrane, "")
+func BenchmarkCopyGoContainerregistry(b *testing.B) {
+	benchmarkCopy(b, CopyGoContainerregistry, "")
 }
 
 func BenchmarkCopyContainerd(b *testing.B) {

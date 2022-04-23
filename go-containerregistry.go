@@ -7,8 +7,8 @@ import (
 	"github.com/google/go-containerregistry/pkg/v1/remote"
 )
 
-// CopyCrane copies srcRef to dstRef using go-containerregistry libs.
-func CopyCrane(ctx context.Context, srcRef, dstRef string, parallelism int) error {
+// CopyGoContainerregistry copies srcRef to dstRef using go-containerregistry libs.
+func CopyGoContainerregistry(ctx context.Context, srcRef, dstRef string, parallelism int) error {
 	opts := []crane.Option{
 		crane.WithContext(ctx),
 		crane.WithTransport(roundTripper),

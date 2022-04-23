@@ -8,7 +8,7 @@ import (
 )
 
 // NewCopyContainerd returns a function that copies srcRef to dstRef using containerd libs.
-func NewCopyContainerd() (copyFunc, func() error, error) {
+func NewCopyContainerd() (func(ctx context.Context, srcRef, dstRef string, parallelism int) error, func() error, error) {
 	client, err := containerd.New("/run/containerd/containerd.sock", containerd.WithDefaultNamespace("sai-bench"))
 	if err != nil {
 		return nil, nil, err

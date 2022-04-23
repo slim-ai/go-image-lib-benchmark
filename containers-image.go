@@ -10,8 +10,8 @@ import (
 	"github.com/containers/image/v5/types"
 )
 
-// CopySkopeo copies srcRef to dstRef using containers/image libs.
-func CopySkopeo(ctx context.Context, srcRef, dstRef string, parallelism int) error {
+// CopyContainersImage copies srcRef to dstRef using containers/image libs.
+func CopyContainersImage(ctx context.Context, srcRef, dstRef string, parallelism int) error {
 	srcIRef, err := alltransports.ParseImageName(srcRef)
 	if err != nil {
 		return err
