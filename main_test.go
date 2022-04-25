@@ -2,9 +2,11 @@ package main
 
 import (
 	"bytes"
+	"crypto/tls"
 	"fmt"
 	"io"
 	"log"
+	"net/http"
 	"net/http/httptest"
 	"os"
 	"strings"
@@ -20,6 +22,12 @@ var (
 )
 
 func getRegistries(b *testing.B, prefix string) (srcRegSrv, dstRegSrv *httptest.Server, srcImgs, dstImgs []string) {
+
+	roundTripper := http.DefaultTransport.(*http.Transport).Clone()
+	roundTripper.TLSClientConfig = &tls.Config{
+		InsecureSkipVerify: true,
+	}
+
 	srcImgs = make([]string, b.N)
 	dstImgs = make([]string, b.N)
 

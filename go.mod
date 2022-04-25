@@ -1,4 +1,4 @@
-module gitlab.com/slim-ai/go-image-lib-benchmark
+module github.com/slim-ai/go-image-lib-benchmark
 
 go 1.16
 

@@ -1,5 +1,7 @@
 package main
 
+import "context"
+
 func main() {
-	_ = CopyGoContainerregistry()
+	_ = CopyGoContainerregistry(context.Background(), "", "", 1)
 }

@@ -1,5 +1,7 @@
 package main
 
+import "context"
+
 func main() {
-	_ = CopyContainersImage()
+	_ = CopyContainersImage(context.Background(), "", "", 1)
 }

@@ -18,7 +18,7 @@ Hardware info:
 ```
 goos: linux
 goarch: amd64
-pkg: gitlab.com/slim-ai/go-image-lib-benchmark
+pkg: github.com/slim-ai/go-image-lib-benchmark
 cpu: 11th Gen Intel(R) Core(TM) i7-1195G7 @ 2.90GHz
 ```
 
